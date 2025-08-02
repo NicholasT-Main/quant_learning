@@ -51,7 +51,6 @@ def plot_stock_distributions(final_groups, df_returns,bins_size=100):
         plt.figure(figsize=(15, 5))
 
         all_data = [data[stock].dropna() for stock in group]
-        labels = group
         colors = ['red', 'blue', 'magenta', 'skyblue', 'yellow']  # Customize as needed
 
         # Define common bins
@@ -67,15 +66,18 @@ def plot_stock_distributions(final_groups, df_returns,bins_size=100):
             # Shift bars for side-by-side placement
             bin_centers = bins[:-1] + bar_width * i + bar_width / 2
 
+            #Plot histogram
             plt.bar(bin_centers, hist, width=bar_width, alpha=0.6,
                     label=f'{stock} Histogram', color=colors[i % len(colors)])
 
             # Plot normal distribution
             mean = stock_data.mean()
-            # plt.axvline(mean,lw=1,label=f'{stock} Mean', alpha=1,color=colors[i % len(colors)])
             std = stock_data.std()
             x = np.linspace(stock_data.min(), stock_data.max(), 1000)
             plt.plot(x, norm.pdf(x, mean, std), lw=1, label=f'{stock} Normal PDF', color=colors[i % len(colors)])
+
+            #Plot mean values
+            # plt.axvline(mean,lw=1,label=f'{stock} Mean', alpha=1,color=colors[i % len(colors)])
 
             print(f'{stock} returns: mean:{mean * 100:.3f}% +/- std:{std * 100:.3f}%')
 
