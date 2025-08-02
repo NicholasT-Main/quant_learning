@@ -44,7 +44,7 @@ def heatmap_correlations(correlation_matrix):
     plt.title('Stock Correlation Matrix')
     plt.show()
 
-def plot_stock_distributions(final_groups, df_returns):
+def plot_stock_distributions(final_groups, df_returns,bins_size=100):
     for group in final_groups:
         data = df_returns[group].dropna()
 
@@ -57,7 +57,7 @@ def plot_stock_distributions(final_groups, df_returns):
         # Define common bins
         # This is the amount of bars the values will be split between
         combined = np.concatenate(all_data)
-        bins = np.histogram_bin_edges(combined, bins=100)
+        bins = np.histogram_bin_edges(combined, bins=bins_size)
 
         bar_width = (bins[1] - bins[0]) / len(group)  # width of each bar
         for i, stock in enumerate(group):
