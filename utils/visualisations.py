@@ -4,6 +4,7 @@ import pandas as pd
 import seaborn as sns
 from scipy.stats import norm
 import itertools
+import yfinance as yf
 
 def plot_tickers_values(all_dict, figsize=(30, 10)):
     """
