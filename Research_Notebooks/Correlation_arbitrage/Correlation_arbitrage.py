@@ -8,6 +8,7 @@ def Correlation_arbitrage() -> int:
         +1 = long, -1 = short, 0 = flat
     """
     #input correlated stocks (ticker list)
+    #predict group mean
     #arbitrage deviations back to group mean
 
     signal = 0  # placeholder, implement logic later
